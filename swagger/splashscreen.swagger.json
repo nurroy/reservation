@@ -1,0 +1,179 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "splashscreen.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/custom/contents": {
+      "get": {
+        "operationId": "splashscreen_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/splashscreenRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contentType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "splashscreen"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "splashscreenData": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imagePath": {
+          "type": "string"
+        },
+        "textName": {
+          "type": "string"
+        },
+        "textDescription": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "string"
+        }
+      },
+      "description": "Data is the data response for go-pinang-och service."
+    },
+    "splashscreenHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/splashscreenStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/splashscreenPagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "splashscreenMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for go-pinang-och service."
+    },
+    "splashscreenPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "splashscreenRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/splashscreenHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/splashscreenData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/splashscreenStatus"
+        }
+      },
+      "description": "RetrieveResponse is the response for go-pinang-och service."
+    },
+    "splashscreenStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/splashscreenMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for go-pinang-och service."
+    }
+  }
+}

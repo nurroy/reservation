@@ -1,0 +1,1980 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "newapply.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications": {
+      "post": {
+        "operationId": "newapply_NewApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/newapplyRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newapplyRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "newapply"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications/{applicationid}": {
+      "get": {
+        "operationId": "newapply_FormData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/newapplyRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.interestRate",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "applicationDetails.isSubmitted",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.legacyCif",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.monthlyInstallment",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "applicationDetails.productCategory",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.productCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.productSubCategory",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.productType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.requestedLoanAmount",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "applicationDetails.requestedTenor",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "applicationDetails.newStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.bankCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.feedback",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationDetails.remarks",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentDetails.docKey",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentDetails.documentCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentDetails.documentType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentDetails.file",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentDetails.fileName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.addressWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.agentCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.birthDateWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.companyName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.empEndDateWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.empStartDateWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.genderWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.nameWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.netIncomeWL",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payrollDetails.payrollAccount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payrollDetails.payrollAccountBranch",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.payrollDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.personelName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.personelNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.placeOfBirthWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.referralCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.savingAmount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payrollDetails.employeeStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollDetails.expenditureAmount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "applicantInformation.addressLine1",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.addressLine2",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.addressLine3",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.addressLine4",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.addressLine5",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.city",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.dateOfBirth",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.emailId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.gender",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.homeOwnershipDuration",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "applicantInformation.homeOwnershipStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.homePhoneNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.isAddressSameAsKTP",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.lastEducation",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.mobileNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.nationalId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.placeOfBirth",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.postalCode",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "applicantInformation.province",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.religion",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicantInformation.creditCardIssuer",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.empEndDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.empStartDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.monthlyExpenditure",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "employmentInformation.monthlyIncome",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "employmentInformation.npwp",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.financialSource",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.workType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.employerName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employmentInformation.employerStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.address",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.address2",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.address3",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.address4",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.agama",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.birthDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.cifNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.idNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.idType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.nama",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.placeOfBirth",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.province",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.sex",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ktpAddressDetails.zipCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.contactAddress",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.contactName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.contactNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.contactPostalCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.maritalStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.motherName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.noOfDependent",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "contactInformation.relationShip",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.relationshipReference.codeType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.relationshipReference.cmCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.relationshipReference.codeDescription",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contactInformation.spouseId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.addressWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.birthDateWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.genderWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.nameWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.payrollAccount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payrollSessionDetails.payrollAccountBranch",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.placeOfBirthWL",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payrollSessionDetails.savingAmount",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "newapply"
+        ]
+      },
+      "put": {
+        "operationId": "newapply_StarRate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/newapplyRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newapplyStarRequest"
+            }
+          }
+        ],
+        "tags": [
+          "newapply"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "newapplyAddressLine4": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "AddressLine4 is response wrapper for form data"
+    },
+    "newapplyAddressLine5": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "AddressLine5 is response wrapper for form data"
+    },
+    "newapplyApplicantDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "emailId": {
+          "type": "string"
+        },
+        "mobileNo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/newapplyGender"
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string"
+        },
+        "nationalId": {
+          "type": "string"
+        },
+        "lastEducation": {
+          "$ref": "#/definitions/newapplyLastEducation"
+        },
+        "creditCardIssuer": {
+          "$ref": "#/definitions/newapplyCreditCardIssuer"
+        },
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        },
+        "addressLine3": {
+          "type": "string"
+        },
+        "addressLine4": {
+          "$ref": "#/definitions/newapplyAddressLine4"
+        },
+        "addressLine5": {
+          "$ref": "#/definitions/newapplyAddressLine5"
+        },
+        "provinceDetails": {
+          "$ref": "#/definitions/newapplyProvinceDetails"
+        },
+        "city": {
+          "$ref": "#/definitions/newapplyCity"
+        },
+        "postalCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "homeOwnershipStatus": {
+          "$ref": "#/definitions/newapplyHomeOwnershipStatus"
+        },
+        "homeOwnershipDuration": {
+          "$ref": "#/definitions/newapplyHomeOwnershipDuration"
+        },
+        "religion": {
+          "$ref": "#/definitions/newapplyReligion"
+        },
+        "isAddressSameAsKTP": {
+          "type": "string"
+        }
+      },
+      "title": "ApplicantDetailsResponse is response wrapper for form data"
+    },
+    "newapplyApplicantInfoRequest": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        },
+        "addressLine3": {
+          "type": "string"
+        },
+        "addressLine4": {
+          "type": "string"
+        },
+        "addressLine5": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string"
+        },
+        "emailId": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "homeOwnershipDuration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "homeOwnershipStatus": {
+          "type": "string"
+        },
+        "homePhoneNumber": {
+          "type": "string"
+        },
+        "isAddressSameAsKTP": {
+          "type": "string"
+        },
+        "lastEducation": {
+          "type": "string"
+        },
+        "mobileNo": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nationalId": {
+          "type": "string"
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "province": {
+          "type": "string"
+        },
+        "religion": {
+          "type": "string"
+        },
+        "creditCardIssuer": {
+          "type": "string"
+        }
+      },
+      "title": "ApplicantInfoRequest is request wrapper for submit applicant information"
+    },
+    "newapplyApplicationDetails": {
+      "type": "object",
+      "properties": {
+        "interestRate": {
+          "type": "number",
+          "format": "double"
+        },
+        "isSubmitted": {
+          "type": "string"
+        },
+        "legacyCif": {
+          "type": "string"
+        },
+        "monthlyInstallment": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productCategory": {
+          "type": "string"
+        },
+        "productCode": {
+          "type": "string"
+        },
+        "productSubCategory": {
+          "type": "string"
+        },
+        "productType": {
+          "type": "string"
+        },
+        "requestedLoanAmount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestedTenor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "newStatus": {
+          "type": "string"
+        },
+        "bankCode": {
+          "type": "string"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "remarks": {
+          "type": "string"
+        }
+      },
+      "description": "ApplicationDetails is the ApplicationDetails Request for pinang-och-go service."
+    },
+    "newapplyApplicationDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "lastActionDate": {
+          "type": "string"
+        },
+        "applicationStatus": {
+          "$ref": "#/definitions/newapplyApplicationStatus"
+        },
+        "productCode": {
+          "type": "string"
+        },
+        "productCategory": {
+          "type": "string"
+        },
+        "productSubCategory": {
+          "type": "string"
+        },
+        "requestedLoanAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "requestedTenor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "interestRate": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthlyInstallment": {
+          "type": "number",
+          "format": "double"
+        },
+        "legacyCif": {
+          "type": "string"
+        },
+        "bankCode": {
+          "type": "string"
+        },
+        "crRespCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ktpRejCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isKtpReUploaded": {
+          "type": "string"
+        },
+        "insuranceFlag": {
+          "type": "string"
+        },
+        "insuranceCost": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "ApplicationDetailsResponse is response wrapper for form data"
+    },
+    "newapplyApplicationStatus": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "description": "ApplicationStatus is the Application Status response for pinang-och-go service."
+    },
+    "newapplyCity": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "City is response wrapper for form data"
+    },
+    "newapplyContactInfoRequest": {
+      "type": "object",
+      "properties": {
+        "contactAddress": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string"
+        },
+        "contactPostalCode": {
+          "type": "string"
+        },
+        "maritalStatus": {
+          "type": "string"
+        },
+        "motherName": {
+          "type": "string"
+        },
+        "noOfDependent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "relationShip": {
+          "type": "string"
+        },
+        "relationshipReference": {
+          "$ref": "#/definitions/newapplyApplicationStatus"
+        },
+        "spouseId": {
+          "type": "string"
+        }
+      },
+      "title": "ContactInfoRequest is request wrapper for submit relative info form"
+    },
+    "newapplyContactInformationResponse": {
+      "type": "object",
+      "properties": {
+        "motherName": {
+          "type": "string"
+        },
+        "noOfDependent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spouseId": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "number",
+          "format": "double"
+        },
+        "maritalStatusReference": {
+          "$ref": "#/definitions/newapplyMaritalStatusReference"
+        },
+        "relationshipReference": {
+          "$ref": "#/definitions/newapplyRelationshipReference"
+        },
+        "partnerNikId": {
+          "type": "string"
+        },
+        "partnerName": {
+          "type": "string"
+        },
+        "emergencyContact": {
+          "type": "string"
+        },
+        "emergencyContactRelation": {
+          "type": "string"
+        },
+        "emergencyContactAddress": {
+          "type": "string"
+        },
+        "emergencyContactPhoneNum": {
+          "type": "string"
+        },
+        "emergencyContactPostalCode": {
+          "type": "string"
+        }
+      },
+      "title": "ContactDetailsResponse is response wrapper for form data"
+    },
+    "newapplyCreditCardIssuer": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "CreditCardIssuer is response wrapper for form data"
+    },
+    "newapplyData": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lastActionDate": {
+          "type": "string"
+        },
+        "applicationStatus": {
+          "$ref": "#/definitions/newapplyApplicationStatus"
+        },
+        "timeLeftForScoreCompletion": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "description": "Data is the Data response for pinang-och-go service."
+    },
+    "newapplyDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "docKey": {
+          "type": "string"
+        },
+        "documentCode": {
+          "type": "string"
+        },
+        "documentType": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        }
+      },
+      "description": "DocumentDetails is the DocumentDetails Request for pinang-och-go service."
+    },
+    "newapplyDocumentDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "documentType": {
+          "type": "string"
+        },
+        "documentCode": {
+          "type": "string"
+        },
+        "docKey": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "fileSeqNo": {
+          "type": "string"
+        },
+        "fileUploadPath": {
+          "type": "string"
+        }
+      },
+      "title": "DocumentDetailsResponse is response wrapper for form data"
+    },
+    "newapplyEmploymentDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "taxId": {
+          "type": "string"
+        },
+        "financialSource": {
+          "type": "string"
+        },
+        "monthlyIncome": {
+          "type": "number",
+          "format": "double"
+        },
+        "monthlyExpense": {
+          "type": "string"
+        },
+        "workType": {
+          "type": "string"
+        },
+        "employerName": {
+          "type": "string"
+        },
+        "employmentStatus": {
+          "type": "string"
+        },
+        "employmentStartDate": {
+          "type": "string"
+        },
+        "employmentEndDate": {
+          "type": "string"
+        },
+        "monthlyExpenditure": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "EmploymentDetailsResponse is response wrapper for form data"
+    },
+    "newapplyEmploymentInfoRequest": {
+      "type": "object",
+      "properties": {
+        "empEndDate": {
+          "type": "string"
+        },
+        "empStartDate": {
+          "type": "string"
+        },
+        "monthlyExpenditure": {
+          "type": "string",
+          "format": "int64"
+        },
+        "monthlyIncome": {
+          "type": "string",
+          "format": "int64"
+        },
+        "npwp": {
+          "type": "string"
+        },
+        "financialSource": {
+          "type": "string"
+        },
+        "workType": {
+          "type": "string"
+        },
+        "employerName": {
+          "type": "string"
+        },
+        "employerStatus": {
+          "type": "string"
+        }
+      },
+      "title": "EmploymentInfoRequest is request wrapper for submit employment information"
+    },
+    "newapplyGender": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "Gender is response wrapper for form data"
+    },
+    "newapplyHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/newapplyStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/newapplyPagination"
+        }
+      },
+      "description": "Header is the header response for pinang-och-go service."
+    },
+    "newapplyHomeOwnershipDuration": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "HomeOwnershipDuration is response wrapper for form data"
+    },
+    "newapplyHomeOwnershipStatus": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "HomeOwnershipStatus is response wrapper for form data"
+    },
+    "newapplyKTPAddressDetailsRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "address3": {
+          "type": "string"
+        },
+        "address4": {
+          "type": "string"
+        },
+        "agama": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "cifNo": {
+          "type": "string"
+        },
+        "idNo": {
+          "type": "string"
+        },
+        "idType": {
+          "type": "string"
+        },
+        "nama": {
+          "type": "string"
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        }
+      },
+      "title": "KTPAddressDetailsRequest is request wrapper for submit ktp address documentDetails"
+    },
+    "newapplyLastEducation": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "lastEducation is response wrapper for form data"
+    },
+    "newapplyMaritalStatusReference": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "MaritalStatusReference is response wrapper for form data"
+    },
+    "newapplyMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for pinang-och-go service."
+    },
+    "newapplyPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for pinang-och-go service."
+    },
+    "newapplyPayrollDetails": {
+      "type": "object",
+      "properties": {
+        "addressWL": {
+          "type": "string"
+        },
+        "agentCode": {
+          "type": "string"
+        },
+        "birthDateWL": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "empEndDateWL": {
+          "type": "string"
+        },
+        "empStartDateWL": {
+          "type": "string"
+        },
+        "genderWL": {
+          "type": "string"
+        },
+        "nameWL": {
+          "type": "string"
+        },
+        "netIncomeWL": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payrollAccount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payrollAccountBranch": {
+          "type": "string"
+        },
+        "payrollDate": {
+          "type": "string"
+        },
+        "personelName": {
+          "type": "string"
+        },
+        "personelNumber": {
+          "type": "string"
+        },
+        "placeOfBirthWL": {
+          "type": "string"
+        },
+        "referralCode": {
+          "type": "string"
+        },
+        "savingAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employeeStatus": {
+          "type": "string"
+        },
+        "expenditureAmount": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "description": "PayrollDetails is the PayrollDetails Request for pinang-och-go service."
+    },
+    "newapplyPayrollDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "payrollAccount": {
+          "type": "string"
+        },
+        "payrollAccountBranch": {
+          "type": "string"
+        },
+        "payrollDate": {
+          "type": "string"
+        },
+        "savingAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "employeeStatus": {
+          "type": "string"
+        },
+        "creditFre3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "creditFre6": {
+          "type": "string",
+          "format": "int64"
+        },
+        "creditFre12": {
+          "type": "string",
+          "format": "int64"
+        },
+        "debitFre3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "debitFre6": {
+          "type": "string",
+          "format": "int64"
+        },
+        "debitFre12": {
+          "type": "string",
+          "format": "int64"
+        },
+        "creditTotal3": {
+          "type": "number",
+          "format": "double"
+        },
+        "creditTotal6": {
+          "type": "number",
+          "format": "double"
+        },
+        "creditTotal12": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitTotal3": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitTotal6": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitTotal12": {
+          "type": "number",
+          "format": "double"
+        },
+        "creditAvg3": {
+          "type": "number",
+          "format": "double"
+        },
+        "creditAvg6": {
+          "type": "number",
+          "format": "double"
+        },
+        "creditAvg12": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitAvg3": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitAvg6": {
+          "type": "number",
+          "format": "double"
+        },
+        "debitAvg12": {
+          "type": "number",
+          "format": "double"
+        },
+        "netBanking": {
+          "type": "string"
+        },
+        "mobileBanking": {
+          "type": "string"
+        },
+        "primaryPhone": {
+          "type": "string"
+        },
+        "secPhone": {
+          "type": "string"
+        },
+        "savingAccOwnshpSts": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "personelName": {
+          "type": "string"
+        },
+        "personelNumber": {
+          "type": "number",
+          "format": "double"
+        },
+        "nameWL": {
+          "type": "string"
+        },
+        "netIncomeWL": {
+          "type": "number",
+          "format": "double"
+        },
+        "birthDateWL": {
+          "type": "string"
+        },
+        "empStartDateWL": {
+          "type": "string"
+        },
+        "empEndDateWL": {
+          "type": "string"
+        },
+        "genderWL": {
+          "type": "string"
+        },
+        "addressWL": {
+          "type": "string"
+        },
+        "placeOfBirthWL": {
+          "type": "string"
+        },
+        "expenditureAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "linkAjaMaxTopUpBalance": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "PayrollDetailsResponse is response wrapper for form data"
+    },
+    "newapplyPayrollSessionDetails": {
+      "type": "object",
+      "properties": {
+        "addressWL": {
+          "type": "string"
+        },
+        "birthDateWL": {
+          "type": "string"
+        },
+        "genderWL": {
+          "type": "string"
+        },
+        "nameWL": {
+          "type": "string"
+        },
+        "payrollAccount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payrollAccountBranch": {
+          "type": "string"
+        },
+        "placeOfBirthWL": {
+          "type": "string"
+        },
+        "savingAmount": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "PayrollSessionDetails is request wrapper for submit ktp info form"
+    },
+    "newapplyProvinceDetails": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "ProvinceDetails is response wrapper for form data"
+    },
+    "newapplyRelationshipReference": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "RelationshipReference is response wrapper for form data"
+    },
+    "newapplyReligion": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "Religion is response wrapper for form data"
+    },
+    "newapplyRespPayrollDetails": {
+      "type": "object",
+      "properties": {
+        "payrollAccount": {
+          "type": "string"
+        },
+        "payrollAccountBranch": {
+          "type": "string"
+        },
+        "savingAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "nameWL": {
+          "type": "string"
+        },
+        "birthDateWL": {
+          "type": "string"
+        },
+        "genderWL": {
+          "type": "string"
+        },
+        "addressWL": {
+          "type": "string"
+        },
+        "placeOfBirthWL": {
+          "type": "string"
+        }
+      },
+      "title": "RespPayrollDetails is response wrapper for form data"
+    },
+    "newapplyRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "applicationDetails": {
+          "$ref": "#/definitions/newapplyApplicationDetails"
+        },
+        "documentDetails": {
+          "$ref": "#/definitions/newapplyDocumentDetails"
+        },
+        "payrollDetails": {
+          "$ref": "#/definitions/newapplyPayrollDetails"
+        },
+        "applicantInformation": {
+          "$ref": "#/definitions/newapplyApplicantInfoRequest"
+        },
+        "employmentInformation": {
+          "$ref": "#/definitions/newapplyEmploymentInfoRequest"
+        },
+        "ktpAddressDetails": {
+          "$ref": "#/definitions/newapplyKTPAddressDetailsRequest"
+        },
+        "contactInformation": {
+          "$ref": "#/definitions/newapplyContactInfoRequest"
+        },
+        "payrollSessionDetails": {
+          "$ref": "#/definitions/newapplyPayrollSessionDetails"
+        },
+        "bankid": {
+          "type": "string"
+        },
+        "userid": {
+          "type": "string"
+        },
+        "applicationid": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "newapplyRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/newapplyHeader"
+        },
+        "data": {
+          "$ref": "#/definitions/newapplyData"
+        },
+        "status": {
+          "$ref": "#/definitions/newapplyStatus"
+        },
+        "applicationDetails": {
+          "$ref": "#/definitions/newapplyApplicationDetailsResponse"
+        },
+        "payrollDetails": {
+          "$ref": "#/definitions/newapplyPayrollDetailsResponse"
+        },
+        "documentDetails": {
+          "$ref": "#/definitions/newapplyDocumentDetailsResponse"
+        },
+        "respPayrollDetails": {
+          "$ref": "#/definitions/newapplyRespPayrollDetails"
+        },
+        "applicantDetails": {
+          "$ref": "#/definitions/newapplyApplicantDetailsResponse"
+        },
+        "contactInformation": {
+          "$ref": "#/definitions/newapplyContactInformationResponse"
+        },
+        "employmentDetails": {
+          "$ref": "#/definitions/newapplyEmploymentDetailsResponse"
+        }
+      },
+      "description": "RetrieveResponse is the Response for pinang-och-go service."
+    },
+    "newapplyStarRequest": {
+      "type": "object",
+      "properties": {
+        "applicationDetails": {
+          "$ref": "#/definitions/newapplyApplicationDetails"
+        },
+        "bankid": {
+          "type": "string"
+        },
+        "userid": {
+          "type": "string"
+        },
+        "applicationid": {
+          "type": "string"
+        }
+      },
+      "description": "StarRequest is thestar rate Retrieve Request for pinang-och-go service."
+    },
+    "newapplyStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/newapplyMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

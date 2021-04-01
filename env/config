@@ -1,0 +1,16 @@
+[runtime]
+environment="$ENV||development"                             ; production / development / etc.
+
+[server]
+host="$HOST||localhost"                ; hostname
+port="$PORT||8000"                                          ; port
+
+[grpc]
+port="$GRPC_PORT||5566"                                     ; gRPC port
+
+[postgres]
+host="$POSTGRES_HOST||localhost"                           ; postgres host
+port="$POSTGRES_PORT||5432"                                     ; postgres port
+user="$POSTGRES_USER||postgres"                                      ; postgres user
+password="$POSTGRES_PASSWORD||"                         ; postgres password
+dbname="$POSTGRES_DBNAME||postgres"                                  ; postgres dbname

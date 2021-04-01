@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "dropdownlist.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/codereferences/{codeTypes}": {
+      "get": {
+        "operationId": "DropdownList_GetCodeReferences",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/dropdownlistRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "codeTypes",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DropdownList"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/01/statecodereferences/{codeTypes}": {
+      "get": {
+        "operationId": "DropdownList_GetStateCodeReferences",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/dropdownlistRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "codeTypes",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DropdownList"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "dropdownlistCodereferences": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string"
+        },
+        "stateDescription": {
+          "type": "string"
+        }
+      },
+      "description": "LNPS is the message response for go-pinang-och service."
+    },
+    "dropdownlistRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dropdownlistCodereferences"
+          }
+        }
+      },
+      "description": "RetrieveResponse is the request for dropdown list service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

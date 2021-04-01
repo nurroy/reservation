@@ -1,0 +1,236 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "bankcode.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/users/{userid}/custom/bankcode/{applicationId}": {
+      "get": {
+        "operationId": "BankCode_GetBankCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/bankcodeRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BankCode"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/01/users/{userid}/custom/bankcodes/{productCode}": {
+      "get": {
+        "operationId": "BankCode_GetBankCodes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/bankcodeRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BankCode"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "bankcodeBankDetails": {
+      "type": "object",
+      "properties": {
+        "bankCode": {
+          "type": "string"
+        },
+        "bankName": {
+          "type": "string"
+        }
+      },
+      "description": "BankDetails is the message response for go-pinang-och service."
+    },
+    "bankcodeData": {
+      "type": "object",
+      "properties": {
+        "bankCode": {
+          "type": "string"
+        },
+        "bankDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bankcodeBankDetails"
+          }
+        }
+      },
+      "description": "BankCode is the message response for go-pinang-och service."
+    },
+    "bankcodeHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/bankcodeStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/bankcodePagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "bankcodeMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for go-pinang-och service."
+    },
+    "bankcodePagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "bankcodeRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/bankcodeHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bankcodeData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/bankcodeStatus"
+        }
+      },
+      "description": "RetrieveResponse is the request for dropdown list service."
+    },
+    "bankcodeStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bankcodeMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for go-pinang-och service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "docsigning.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/users/{userid}/applications/{applicationid}/custom/doctext/{text}": {
+      "get": {
+        "operationId": "DocSigning_GetDocumentForSigning",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/docsigningRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DocSigning"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "docsigningData": {
+      "type": "object",
+      "properties": {
+        "rowNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "textName": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "srlNumber": {
+          "type": "string"
+        },
+        "textType": {
+          "type": "string"
+        },
+        "parentTextName": {
+          "type": "string"
+        },
+        "indentLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "table": {
+          "$ref": "#/definitions/docsigningRows"
+        }
+      },
+      "description": "Data is the Data response for pinang-och-go service."
+    },
+    "docsigningRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/docsigningData"
+          }
+        }
+      },
+      "description": "RetrieveResponse is the Response for pinang-och-go service."
+    },
+    "docsigningRow": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "description": "Row is the Row response for pinang-och-go service."
+    },
+    "docsigningRows": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/docsigningRow"
+          }
+        }
+      },
+      "description": "Rows is the Rows response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

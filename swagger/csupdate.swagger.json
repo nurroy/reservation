@@ -1,0 +1,179 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "csupdate.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankId}/custom/applications/{applicationId}/creditscoreupdate": {
+      "post": {
+        "operationId": "CsUpdate_CreditScoreUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/csupdateRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/csupdateRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CsUpdate"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "csupdateData": {
+      "type": "object",
+      "properties": {
+        "validPayrollDate": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statusCode": {
+          "type": "string"
+        },
+        "applicationStatus": {
+          "type": "string"
+        }
+      },
+      "description": "Data is the Data response for pinang-och-go service."
+    },
+    "csupdateRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "score": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "string"
+        },
+        "plafond": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "approvedAmount": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "tenor": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "respCode": {
+          "type": "string"
+        },
+        "validPayrollDate": {
+          "type": "string"
+        },
+        "validPendapatanNetto": {
+          "type": "string"
+        },
+        "validStartDate": {
+          "type": "string"
+        },
+        "validEndDate": {
+          "type": "string"
+        },
+        "bankId": {
+          "type": "string"
+        },
+        "applicationId": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "csupdateRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/csupdateData"
+          }
+        }
+      },
+      "description": "RetrieveResponse is the Response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "atmverification.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/users/{userid}/custom/atminquiry": {
+      "post": {
+        "operationId": "atmverification_Post",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/atmverificationRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atmverificationRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "atmverification"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "atmverificationCamscallReferenceVO": {
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "string"
+        },
+        "branchCode": {
+          "type": "string"
+        }
+      },
+      "description": "CamscallReferenceVO is the CamscallReferenceVO response for pinang-och-go service."
+    },
+    "atmverificationData": {
+      "type": "object",
+      "properties": {
+        "camscallReferenceVO": {
+          "$ref": "#/definitions/atmverificationCamscallReferenceVO"
+        },
+        "silverLakeAcctInquiryReferenceVO": {
+          "$ref": "#/definitions/atmverificationSilverLakeAcctInquiryReferenceVO"
+        },
+        "silverLakeCIFInquiryReferenceVO": {
+          "$ref": "#/definitions/atmverificationSilverLakeCIFInquiryReferenceVO"
+        }
+      },
+      "description": "Data is the Data response for pinang-och-go service."
+    },
+    "atmverificationHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/atmverificationStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/atmverificationPagination"
+        }
+      },
+      "description": "Header is the header response for pinang-och-go service."
+    },
+    "atmverificationMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for pinang-och-go service."
+    },
+    "atmverificationPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for pinang-och-go service."
+    },
+    "atmverificationRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "userid": {
+          "type": "string"
+        },
+        "ktp": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "expiryDate": {
+          "type": "string"
+        },
+        "bankCode": {
+          "type": "string"
+        },
+        "productCode": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "atmverificationRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/atmverificationHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atmverificationData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/atmverificationStatus"
+        }
+      },
+      "description": "RetrieveResponse is the Response for pinang-och-go service."
+    },
+    "atmverificationSilverLakeAcctInquiryReferenceVO": {
+      "type": "object",
+      "properties": {
+        "cifNo": {
+          "type": "string"
+        },
+        "statusRekening": {
+          "type": "string"
+        },
+        "savingsAmount": {
+          "type": "string"
+        }
+      },
+      "description": "SilverLakeAcctInquiryReferenceVO is the SilverLakeAcctInquiryReferenceVO response for pinang-och-go service."
+    },
+    "atmverificationSilverLakeCIFInquiryReferenceVO": {
+      "type": "object",
+      "properties": {
+        "cifNo": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "address3": {
+          "type": "string"
+        },
+        "address4": {
+          "type": "string"
+        },
+        "agama": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "idNo": {
+          "type": "string"
+        },
+        "idType": {
+          "type": "string"
+        },
+        "nama": {
+          "type": "string"
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        }
+      },
+      "description": "SilverLakeCIFInquiryReferenceVO is the SilverLakeCIFInquiryReferenceVO response for pinang-och-go service."
+    },
+    "atmverificationStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atmverificationMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

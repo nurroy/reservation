@@ -1,0 +1,185 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "disbursement.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications/{applicationId}/createloan": {
+      "put": {
+        "operationId": "Disbursement_CreateLoan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/disbursementRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Disbursement"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "disbursementData": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "payrollAccount": {
+          "type": "string"
+        },
+        "loanAccountId": {
+          "type": "string"
+        },
+        "accountLimit": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "disbursementHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/disbursementStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/disbursementPagination"
+        }
+      },
+      "description": "Header is the header response for pinang-och-go service."
+    },
+    "disbursementMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for pinang-och-go service."
+    },
+    "disbursementPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for pinang-och-go service."
+    },
+    "disbursementRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/disbursementHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/disbursementData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/disbursementStatus"
+        }
+      },
+      "description": "RetrieveResponse is the request for disbursement list service."
+    },
+    "disbursementStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/disbursementMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

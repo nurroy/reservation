@@ -1,0 +1,186 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "menu.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/reservation/menu": {
+      "get": {
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/menuRetrieveResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "menu",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "menu"
+        ]
+      },
+      "post": {
+        "operationId": "Post",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/menuRetrieveResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/menuRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "menu"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "menuData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "menu": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "description": "Data is the data response for go-pinang-och service."
+    },
+    "menuHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/menuStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/menuPagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "menuMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for go-pinang-och service."
+    },
+    "menuPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "menuRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "menu": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the request for go-pinang-och service."
+    },
+    "menuRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/menuHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/menuData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/menuStatus"
+        }
+      },
+      "description": "RetrieveResponse is the response for go-pinang-och service."
+    },
+    "menuStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/menuMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for go-pinang-och service."
+    }
+  }
+}

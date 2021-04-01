@@ -1,0 +1,213 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "loanproduct.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/users/{userid}/custom/loanproducts": {
+      "get": {
+        "operationId": "LoanProducts_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanproductRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LoanProducts"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "loanproductData": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": "string"
+        },
+        "productCategory": {
+          "type": "string"
+        },
+        "productSubCategory": {
+          "type": "string"
+        },
+        "configType": {
+          "type": "string"
+        },
+        "minAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "maxAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "tenureDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loanproductTenureDetails"
+          }
+        },
+        "loanPurpose": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Data is the data response for loan products service."
+    },
+    "loanproductHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/loanproductStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/loanproductPagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "loanproductMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for go-pinang-och service."
+    },
+    "loanproductPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "loanproductRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/loanproductHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loanproductData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/loanproductStatus"
+        }
+      },
+      "description": "RetrieveResponse is the request for loan products service."
+    },
+    "loanproductStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loanproductMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for go-pinang-och service."
+    },
+    "loanproductTenureDetails": {
+      "type": "object",
+      "properties": {
+        "tenure": {
+          "type": "string"
+        },
+        "interest": {
+          "type": "string"
+        }
+      },
+      "description": "TenureDetails is the data response for loan products service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "protobufNullValue": {
+      "type": "string",
+      "enum": [
+        "NULL_VALUE"
+      ],
+      "default": "NULL_VALUE",
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "privy.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications/{applicationId}/generateOtp": {
+      "get": {
+        "operationId": "Privy_GetPrivyGenerateOtp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/privyOtpRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "otp.otp",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otp.token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Privy"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications/{applicationId}/verifyOTP": {
+      "post": {
+        "operationId": "Privy_PostPrivyVerifyOtp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/privyVerifyOTPResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/privyOtpRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Privy"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/privyregistrations": {
+      "get": {
+        "operationId": "Privy_GetPrivyRegistrationData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/privyRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "otp.otp",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otp.token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Privy"
+        ]
+      },
+      "post": {
+        "operationId": "Privy_Privy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/privyRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/privyRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Privy"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "privyFileData": {
+      "type": "object",
+      "properties": {
+        "fileData": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        }
+      },
+      "description": "FileData is the FileData Request for pinang-och-go service."
+    },
+    "privyOtpRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "otp": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "description": "OtpRetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "privyOtpRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "description": "OtpRetrieveResponse is the Data response for pinang-och-go service."
+    },
+    "privyRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "file1": {
+          "$ref": "#/definitions/privyFileData"
+        },
+        "file2": {
+          "$ref": "#/definitions/privyFileData"
+        },
+        "bankid": {
+          "type": "string"
+        },
+        "userid": {
+          "type": "string"
+        },
+        "applicationId": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "description": "RetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "privyRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "privyId": {
+          "type": "string"
+        },
+        "ktpNum": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveResponse is the Data response for pinang-och-go service."
+    },
+    "privyVerifyOTPResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/privyOtpRetrieveResponse"
+          }
+        }
+      },
+      "description": "VerifyOTPResponse is the Data response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

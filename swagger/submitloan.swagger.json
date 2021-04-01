@@ -1,0 +1,204 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "submitloan.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/01/users/{userid}/custom/applications/{applicationid}/updateLoanDetails": {
+      "put": {
+        "operationId": "SubmitLoan_SubmitLoanService",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/submitloanRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/submitloanRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SubmitLoan"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "submitloanData": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "number",
+          "format": "double"
+        },
+        "lastActionDate": {
+          "type": "number",
+          "format": "double"
+        },
+        "applicationStatus": {
+          "type": "number",
+          "format": "double"
+        },
+        "timeLeftForScoreCompletion": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "description": "Data is the data response for go-pinang-och service."
+    },
+    "submitloanHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/submitloanStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/submitloanPagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "submitloanMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for pinang-och-go service."
+    },
+    "submitloanPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "submitloanRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "selectedPlafond": {
+          "type": "number",
+          "format": "double"
+        },
+        "selectedTenor": {
+          "type": "string"
+        },
+        "userid": {
+          "type": "string"
+        },
+        "applicationid": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the request for submit loan service."
+    },
+    "submitloanRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/submitloanHeader"
+        },
+        "data": {
+          "$ref": "#/definitions/submitloanData"
+        }
+      },
+      "description": "RetrieveResponse is the response for go-pinang-och service."
+    },
+    "submitloanStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/submitloanMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for pinang-och-go service."
+    }
+  }
+}

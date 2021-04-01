@@ -1,0 +1,175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "validatephoto.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applications/{applicationId}/valdiatePhoto": {
+      "post": {
+        "operationId": "Validatephoto_PostValidatephoto",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/validatephotoRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/validatephotoRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Validatephoto"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "validatephotoFileData": {
+      "type": "object",
+      "properties": {
+        "fileData": {
+          "type": "string"
+        }
+      },
+      "description": "FileData is the FileData Request for pinang-och-go service."
+    },
+    "validatephotoRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "liveImage1": {
+          "$ref": "#/definitions/validatephotoFileData"
+        },
+        "liveImage2": {
+          "$ref": "#/definitions/validatephotoFileData"
+        },
+        "token": {
+          "type": "string"
+        },
+        "bankid": {
+          "type": "string"
+        },
+        "userid": {
+          "type": "string"
+        },
+        "applicationId": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the Retrieve Request for pinang-och-go service."
+    },
+    "validatephotoRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/validatephotoValidatephotoRetrieveResponse"
+          }
+        }
+      },
+      "description": "RetrieveResponse is the Data response for pinang-och-go service."
+    },
+    "validatephotoValidatephotoRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "merchantKey": {
+          "type": "string"
+        },
+        "statusAfterDocCreation": {
+          "type": "string"
+        },
+        "statusAfterPhotoCompare": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "description": "ValidatephotoRetrieveResponse is the Data response for pinang-och-go service."
+    }
+  }
+}

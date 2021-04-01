@@ -1,0 +1,312 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "inquiry.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/applicationInquiry": {
+      "get": {
+        "operationId": "Inquiry_GetApplicationInquiry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/inquiryData"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "applicationStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Inquiry"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "inquiryApplicationStatus": {
+      "type": "object",
+      "properties": {
+        "codeType": {
+          "type": "string"
+        },
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "ApplicationStatus is the response wrapper for application status inquiry list service"
+    },
+    "inquiryApproveDetails": {
+      "type": "object",
+      "properties": {
+        "appliedAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "approvalAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "plafond1": {
+          "type": "number",
+          "format": "double"
+        },
+        "plafond2": {
+          "type": "number",
+          "format": "double"
+        },
+        "tenor1": {
+          "type": "string"
+        },
+        "tenor2": {
+          "type": "string"
+        },
+        "disbursementAccount": {
+          "type": "string"
+        },
+        "accountBranch": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "validityDate": {
+          "type": "string"
+        },
+        "isKTPVerified": {
+          "type": "string"
+        },
+        "isKTPReUploaded": {
+          "type": "string"
+        },
+        "ktpRejectCnt": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nama": {
+          "type": "string"
+        },
+        "timeLeftForBrivaPayment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "paymentStatusFlg": {
+          "type": "string"
+        },
+        "monthlyPayDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/inquiryMonthlyPayDetails"
+          }
+        },
+        "oneMonthPayDetails": {
+          "$ref": "#/definitions/inquiryOneMonthlyPaymentDetails"
+        }
+      },
+      "title": "ApproveDetails is the response wrapper for reject details inquiry list service"
+    },
+    "inquiryData": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "number",
+          "format": "double"
+        },
+        "applicationStatus": {
+          "$ref": "#/definitions/inquiryApplicationStatus"
+        },
+        "lastActionDate": {
+          "type": "string"
+        },
+        "timeLeftForScoreCompletion": {
+          "type": "string",
+          "format": "int64"
+        },
+        "isEmailVerified": {
+          "type": "string"
+        },
+        "rejectionDetails": {
+          "$ref": "#/definitions/inquiryRejectDetails"
+        },
+        "approvalDetails": {
+          "$ref": "#/definitions/inquiryApproveDetails"
+        },
+        "incompleteApplicationDetails": {
+          "$ref": "#/definitions/inquiryIncompleteApplicationDetails"
+        },
+        "loanLimitDetails": {
+          "$ref": "#/definitions/inquiryLoanLimitDetails"
+        },
+        "payrollrejDetails": {
+          "$ref": "#/definitions/inquiryPayrollRejectDetails"
+        },
+        "isSecondApply": {
+          "type": "string"
+        },
+        "previousLoanPaidAppId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "previousLoanAppStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "inquiryIncompleteApplicationDetails": {
+      "type": "object",
+      "properties": {
+        "approvalAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "validityDate": {
+          "type": "string"
+        }
+      },
+      "title": "IncompleteApplicationDetails is the response wrapper for incomplete application details inquiry list service"
+    },
+    "inquiryLoanLimitDetails": {
+      "type": "object",
+      "properties": {
+        "sanctionedLimit": {
+          "type": "number",
+          "format": "float"
+        },
+        "availableLimit": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "LoanLimitDetails is the response wrapper for loan limit details inquiry list service"
+    },
+    "inquiryMonthlyPayDetails": {
+      "type": "object",
+      "properties": {
+        "loanTenor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "monthlyPayment": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "MonthlyPayDetails is the response wrapper for monthly payment details inquiry list service"
+    },
+    "inquiryOneMonthlyPaymentDetails": {
+      "type": "object",
+      "properties": {
+        "oneMonthPayForPlafond1": {
+          "type": "number",
+          "format": "float"
+        },
+        "oneMonthPayForPlafond2": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "OneMonthlyPaymentDetails is the response wrapper for one month payment plafond inquiry list service"
+    },
+    "inquiryPayrollRejectDetails": {
+      "type": "object",
+      "properties": {
+        "nextEligibilityDate": {
+          "type": "string"
+        }
+      },
+      "title": "PayrollRejectDetails is the response wrapper for payroll reject details inquiry list service"
+    },
+    "inquiryRejectDetails": {
+      "type": "object",
+      "properties": {
+        "nextEligibilityDate": {
+          "type": "string"
+        },
+        "responseCode": {
+          "type": "string"
+        }
+      },
+      "title": "RejectDetails is the response wrapper for reject details inquiry list service"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

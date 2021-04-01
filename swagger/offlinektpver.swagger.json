@@ -1,0 +1,196 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "offlinektpver.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankId}/custom/applications/{applicationId}/verifyKTP": {
+      "post": {
+        "operationId": "OfflineKTPVer_Post",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/offlinektpverRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/offlinektpverRetrieveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OfflineKTPVer"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "offlinektpverData": {
+      "type": "object",
+      "properties": {
+        "responseStatus": {
+          "type": "string"
+        },
+        "responseCode": {
+          "type": "string"
+        }
+      },
+      "description": "Data is the data response for offline KTP verification service."
+    },
+    "offlinektpverHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/offlinektpverStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/offlinektpverPagination"
+        }
+      },
+      "description": "Header is the header response for pinang-och-go service."
+    },
+    "offlinektpverMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for pinang-och-go service."
+    },
+    "offlinektpverPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for pinang-och-go service."
+    },
+    "offlinektpverRetrieveRequest": {
+      "type": "object",
+      "properties": {
+        "isKTPVerified": {
+          "type": "string"
+        },
+        "bankId": {
+          "type": "string"
+        },
+        "applicationId": {
+          "type": "string"
+        }
+      },
+      "description": "RetrieveRequest is the request for offline KTP verification service."
+    },
+    "offlinektpverRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/offlinektpverHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/offlinektpverData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/offlinektpverStatus"
+        }
+      },
+      "description": "RetrieveResponse is the request for offline KTP verification service."
+    },
+    "offlinektpverStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/offlinektpverMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for pinang-och-go service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

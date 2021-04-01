@@ -1,0 +1,446 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "loans.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/loanHist/{loanaccountid}": {
+      "get": {
+        "operationId": "Loans_GetLoanHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loansListResponseHistory"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "loanaccountid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Loans"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/loans": {
+      "get": {
+        "operationId": "Loans_GetLoans",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loansRetrieveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "loanaccountid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Loans"
+        ]
+      }
+    },
+    "/corp/rest/v1/banks/{bankid}/users/{userid}/custom/loans/{loanaccountid}": {
+      "get": {
+        "operationId": "Loans_GetLoanRepayment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loansListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bankid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "loanaccountid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Loans"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "loansAccStatus": {
+      "type": "object",
+      "properties": {
+        "cmCode": {
+          "type": "string"
+        },
+        "codeDescription": {
+          "type": "string"
+        }
+      },
+      "title": "AccStatus is AccStatus struct"
+    },
+    "loansCurrencyTotal": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      },
+      "title": "CurrencyTotal is the data response for currency and amount"
+    },
+    "loansData": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "loanSrlNum": {
+          "type": "string"
+        },
+        "loanStartDate": {
+          "type": "string"
+        },
+        "overdueDays": {
+          "type": "string"
+        },
+        "countofTotalInstallement": {
+          "type": "string"
+        },
+        "countOfPendingInstallement": {
+          "type": "string"
+        },
+        "accountCurrency": {
+          "$ref": "#/definitions/loansAccStatus"
+        },
+        "accountStatus": {
+          "$ref": "#/definitions/loansAccStatus"
+        },
+        "totalOutstandingAmount": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "sactionAmount": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "installmentAmountPerMonth": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "currentInstallementAmount": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "currentInstallementPrincipal": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "currentInstallmentInterest": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "overdueInstallementAmount": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "overdueInstallementPrincipal": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "overdueInstallmentInterest": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "overdueInstallmentPenality": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        },
+        "dueDays": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "paymentAllowed": {
+          "type": "string"
+        },
+        "totalOutstandingPriAmount": {
+          "$ref": "#/definitions/loansCurrencyTotal"
+        }
+      },
+      "description": "Data is the data response for loan products service."
+    },
+    "loansHeader": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/loansStatus"
+        },
+        "pagination": {
+          "$ref": "#/definitions/loansPagination"
+        }
+      },
+      "description": "Header is the header response for go-pinang-och service."
+    },
+    "loansList": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "installmentId": {
+          "type": "string"
+        },
+        "installmentNo": {
+          "type": "string"
+        },
+        "installmentAmount": {
+          "type": "string"
+        },
+        "installmentDate": {
+          "type": "string"
+        },
+        "srlNo": {
+          "type": "string"
+        }
+      }
+    },
+    "loansListHistory": {
+      "type": "object",
+      "properties": {
+        "installmentNo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentAmount": {
+          "$ref": "#/definitions/loansPaymentAmount"
+        },
+        "txnDate": {
+          "type": "string"
+        },
+        "trnId": {
+          "type": "string"
+        },
+        "trnType": {
+          "type": "string"
+        },
+        "valueDate": {
+          "type": "string"
+        },
+        "txnParticulars": {
+          "type": "string"
+        }
+      }
+    },
+    "loansListResponse": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loansList"
+          }
+        }
+      }
+    },
+    "loansListResponseHistory": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loansListHistory"
+          }
+        }
+      }
+    },
+    "loansMessage": {
+      "type": "object",
+      "properties": {
+        "message_TYPE": {
+          "type": "string"
+        },
+        "nameSpaceInfo": {
+          "type": "string"
+        },
+        "messageCode": {
+          "type": "string"
+        },
+        "messageAddlnInfo": {
+          "type": "string"
+        },
+        "messageDesc": {
+          "type": "string"
+        }
+      },
+      "description": "Message is the message response for go-pinang-och service."
+    },
+    "loansPagination": {
+      "type": "object",
+      "properties": {
+        "hasMoreRecords": {
+          "type": "string"
+        },
+        "numRecReturned": {
+          "type": "string"
+        }
+      },
+      "description": "Pagination is the pagination response for go-pinang-och service."
+    },
+    "loansPaymentAmount": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "loansRetrieveResponse": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "#/definitions/loansHeader"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loansData"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/loansStatus"
+        }
+      },
+      "description": "RetrieveResponse is the request for loan products service."
+    },
+    "loansStatus": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loansMessage"
+          }
+        }
+      },
+      "description": "Status is the status response for go-pinang-och service."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package api.reservation.menu;
+
+option go_package = "belajar/reservation/proto/v1/menu";
+
+import "lib/google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+
+// Message is the message response for go-pinang-och service.
+message Message{
+  string message_TYPE=1;
+  string messageCode=2;
+  string messageDesc=3;
+  string messageAddlnInfo=4;
+  string nameSpaceInfo=5;
+}
+
+// Status is the status response for go-pinang-och service.
+message Status{
+  repeated Message message =1;
+}
+
+// Pagination is the pagination response for go-pinang-och service.
+message Pagination{
+  string hasMoreRecords=1;
+  string numRecReturned=2;
+}
+
+// Header is the header response for go-pinang-och service.
+message Header {
+  Status status=1;
+  Pagination pagination=2;
+}
+
+// Data is the data response for go-pinang-och service.
+message Data {
+  string id=1;
+  string menu=2;
+  string description=3;
+}
+
+// RetrieveResponse is the response for go-pinang-och service.
+message RetrieveResponse {
+  Header header=1;
+  repeated Data data=2;
+  Status status=3;
+}
+
+// RetrieveRequest is the request for go-pinang-och service.
+message RetrieveRequest {
+  string id=1;
+  string menu=2;
+  string description=3;
+}
+
+// splashscreen service provides utility methods for the API.
+service menu {
+  rpc Post(RetrieveRequest) returns(RetrieveResponse){
+    option (google.api.http) = {
+      post  : "/reservation/menu"
+      body  : "*"
+    };
+  }
+  rpc Get(RetrieveRequest) returns (RetrieveResponse){
+    option (google.api.http) = {
+      get  : "/reservation/menu"
+    };
+  }
+}
+
